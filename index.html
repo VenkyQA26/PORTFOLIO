@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Venkatesh S B | Portfolio</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --bg: #0b0914;
+      --card-bg: rgba(22, 17, 38, 0.7);
+      --card-border: rgba(139, 92, 246, 0.18);
+      --accent-violet: #8b5cf6;
+      --accent-violet-glow: rgba(139, 92, 246, 0.28);
+      --accent-blue: #3b82f6;
+      --accent-magenta: #d946ef;
+      --text-main: #f5f3ff;
+      --text-muted: #a78bfa;
+      --text-dim: #94a3b8;
+      --font-heading: 'Outfit', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-heading);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 20% 15%, rgba(139, 92, 246, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 45%);
+      background-attachment: fixed;
+    }
+
+    /* --- NAV --- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.15rem 8%;
+      backdrop-filter: blur(18px);
+      background: rgba(11, 9, 20, 0.85);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo span {
+      color: var(--accent-violet);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-violet);
+    }
+
+    .btn-resume {
+      padding: 0.55rem 1.25rem;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent-violet), var(--accent-blue));
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.88rem;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-resume:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px var(--accent-violet-glow);
+    }
+
+    /* --- LAYOUT --- */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 4.5rem 0;
+    }
+
+    .section-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title::after {
+      content: "";
+      flex-grow: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--card-border), transparent);
+    }
+
+    /* --- HERO --- */
+    .hero {
+      padding: 6.5rem 0 3.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .badge-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pill {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      border: 1px solid var(--card-border);
+      background: rgba(139, 92, 246, 0.08);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+    }
+
+    .pill-edu {
+      border-color: rgba(139, 92, 246, 0.4);
+      color: #c4b5fd;
+    }
+
+    .pill-fresher {
+      border-color: rgba(59, 130, 246, 0.4);
+      color: #93c5fd;
+      background: rgba(59, 130, 246, 0.08);
+    }
+
+    .hero h1 {
+      font-size: 3.4rem;
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 .gradient-text {
+      background: linear-gradient(135deg, #ffffff 30%, var(--accent-violet) 70%, var(--accent-magenta) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-dim);
+      max-width: 680px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-secondary {
+      padding: 0.6rem 1.4rem;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--text-muted);
+    }
+
+    /* --- CARDS & GRIDS --- */
+    .glass-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(12px);
+      border-radius: 14px;
+      padding: 1.75rem;
+      transition: transform 0.25s ease, border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-violet);
+      box-shadow: 0 10px 30px -10px var(--accent-violet-glow);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .chip {
+      background: rgba(139, 92, 246, 0.08);
+      border: 1px solid var(--card-border);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+      color: #ddd6fe;
+    }
+
+    .award-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .award-icon {
+      font-size: 1.4rem;
+      color: var(--accent-magenta);
+      padding: 0.65rem;
+      background: rgba(217, 70, 239, 0.1);
+      border-radius: 10px;
+    }
+
+    /* --- RESUME MODAL --- */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #100d1e;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      max-width: 820px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .resume-paper {
+      background: #ffffff;
+      color: #1e293b;
+      padding: 2.5rem;
+      border-radius: 8px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    .resume-header {
+      border-bottom: 2px solid #7c3aed;
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .resume-header h1 {
+      font-size: 2rem;
+      color: #0f172a;
+      margin-bottom: 0.25rem;
+    }
+
+    .resume-subtitle {
+      font-weight: 600;
+      color: #7c3aed;
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .resume-section {
+      margin-bottom: 1.25rem;
+    }
+
+    .resume-section h3 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #7c3aed;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .resume-item-header {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .resume-item-sub {
+      color: #64748b;
+      font-size: 0.88rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .resume-bullets {
+      padding-left: 1.2rem;
+      font-size: 0.88rem;
+      color: #334155;
+    }
+
+    .resume-bullets li {
+      margin-bottom: 0.3rem;
+    }
+
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #printableResume, #printableResume * {
+        visibility: visible;
+      }
+      #printableResume {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        padding: 0;
+      }
+    }
+
+    footer {
+      border-top: 1px solid var(--card-border);
+      text-align: center;
+      padding: 2.5rem 0;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.3rem; }
+      .nav-links { display: none; }
+      .resume-paper { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo"><i class="fa-solid fa-brain"></i> Venkatesh <span>S B</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills &amp; Certs</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="btn-resume" onclick="openResume()">
+      <i class="fa-regular fa-file-pdf"></i> View Resume
+    </button>
+  </nav>
+
+  <main class="container">
+    
+    <!-- Hero Section -->
+    <header id="about" class="hero">
+      <div class="badge-bar">
+        <span class="pill pill-edu"><i class="fa-solid fa-graduation-cap"></i> VIT Vellore • B.Tech CSE (Data Science)</span>
+        <span class="pill pill-fresher"><i class="fa-solid fa-chart-line"></i> Fresher &amp; Data Practitioner</span>
+      </div>
+
+      <h1>
+        Hi, I'm Venkatesh S B.<br>
+        <span class="gradient-text">Machine Learning &amp; Data Science Specialist.</span>
+      </h1>
+
+      <p>
+        I am a Computer Science &amp; Engineering undergraduate specializing in Data Science at Vellore Institute of Technology, Vellore. Passionate about machine learning pipelines, deep neural architectures, and data-driven systems.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn-resume" onclick="openResume()">
+          <i class="fa-solid fa-file-arrow-down"></i> View Full Resume
+        </button>
+        <a href="#contact" class="btn-secondary">
+          <i class="fa-regular fa-envelope"></i> Get In Touch
+        </a>
+      </div>
+    </header>
+
+    <!-- Skills & Certifications -->
+    <section id="skills">
+      <h2 class="section-title"><i class="fa-solid fa-microchip" style="color: var(--accent-violet);"></i> Technical Domain &amp; Certifications</h2>
+      
+      <div class="grid-3">
+        <!-- Certification 1 -->
+        <div class="glass-card">
+          <div style="font-size: 1.5rem; color: #60a5fa; margin-bottom: 0.75rem;"><i class="fa-solid fa-certificate"></i></div>
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.4rem;">Machine Learning Specialization</h4>
+          <p style="color: var(--text-dim); font-size: 0.88rem; margin-bottom: 0.8rem;">Issued by <strong>DeepLearning.AI</strong></p>
+          <p style="color: var(--text-dim); font-size: 0.85rem;">Mastery in supervised learning, neural network architectures, regularized loss functions, and decision trees.</p>
+        </div>
+
+        <!-- Certification 2 -->
+        <div class="glass-card">
+          <div style="font-size: 1.5rem; color: #a78bfa; margin-bottom: 0.75rem;"><i class="fa-solid fa-database"></i></div>
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.4rem;">Data Science Professional Certificate</h4>
+          <p style="color: var(--text-dim); font-size: 0.88rem; margin-bottom: 0.8rem;">Certified by <strong>IBM</strong></p>
+          <p style="color: var(--text-dim); font-size: 0.85rem;">Hands-on training in SQL relational querying, data visualization, and applied methodology for big data analytics.</p>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="glass-card">
+          <div style="font-size: 1.5rem; color: var(--accent-magenta); margin-bottom: 0.75rem;"><i class="fa-solid fa-cubes"></i></div>
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.4rem;">Data Science Toolkit</h4>
+          <div class="chips" style="margin-top: 0.5rem;">
+            <span class="chip">Python</span>
+            <span class="chip">R</span>
+            <span class="chip">PyTorch</span>
+            <span class="chip">Scikit-Learn</span>
+            <span class="chip">Pandas</span>
+            <span class="chip">NumPy</span>
+            <span class="chip">SQL</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2 class="section-title"><i class="fa-solid fa-diagram-project" style="color: var(--accent-violet);"></i> Machine Learning Projects</h2>
+      <div class="grid-2">
+
+        <article class="glass-card">
+          <span style="font-size: 0.8rem; color: var(--accent-violet); font-family: var(--font-mono);">DEEP LEARNING &amp; FORECASTING</span>
+          <h3 style="margin: 0.5rem 0;">Neural Time-Series Forecasting Model</h3>
+          <p style="color: var(--text-dim); font-size: 0.95rem; margin-bottom: 1rem;">
+            Engineered recurrent neural networks (LSTM) to forecast seasonal trend variations in continuous multivariate time-series datasets, optimizing RMSE and predictive accuracy.
+          </p>
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">PyTorch</span>
+            <span class="chip">Time Series</span>
+          </div>
+        </article>
+
+        <article class="glass-card">
+          <span style="font-size: 0.8rem; color: #60a5fa; font-family: var(--font-mono);">NATURAL LANGUAGE PROCESSING</span>
+          <h3 style="margin: 0.5rem 0;">Semantic Document Retrieval Engine</h3>
+          <p style="color: var(--text-dim); font-size: 0.95rem; margin-bottom: 1rem;">
+            Designed a vector embedding search pipeline using cosine similarity metrics to enable fast and context-aware information retrieval over large textual corpora.
+          </p>
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">Vector Embeddings</span>
+            <span class="chip">NLP</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements">
+      <h2 class="section-title"><i class="fa-solid fa-trophy" style="color: var(--accent-magenta);"></i> Honors &amp; Competitions</h2>
+      <div class="grid-2">
+        
+        <div class="glass-card award-card">
+          <div class="award-icon"><i class="fa-solid fa-medal"></i></div>
+          <div>
+            <h4 style="font-size: 1.1rem; margin-bottom: 0.2rem;">Data Science Hackathon Finalist</h4>
+            <span style="font-size: 0.82rem; color: var(--accent-violet); font-family: var(--font-mono);">Inter-College Technical Sprint</span>
+            <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 0.5rem;">
+              Developed an automated feature extraction and classification model on skewed financial records within a 24-hour sprint.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass-card award-card">
+          <div class="award-icon"><i class="fa-solid fa-award"></i></div>
+          <div>
+            <h4 style="font-size: 1.1rem; margin-bottom: 0.2rem;">Academic Rigor in Analytics</h4>
+            <span style="font-size: 0.82rem; color: var(--accent-violet); font-family: var(--font-mono);">VIT Vellore</span>
+            <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 0.5rem;">
+              Demonstrated consistent high performance in Statistical Modeling, Applied Linear Algebra, and Advanced Data Structures.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="glass-card" style="text-align: center; padding: 3rem 1.5rem;">
+        <h2 style="font-size: 2rem; margin-bottom: 0.75rem;">Get In Touch</h2>
+        <p style="color: var(--text-dim); max-width: 500px; margin: 0 auto 1.75rem;">
+          Open for discussions around machine learning applications, statistical analysis, and data engineering projects.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 1rem;">
+          <a href="mailto:venkatesh.sb2026@vitstudent.ac.in" class="btn-resume">
+            <i class="fa-regular fa-envelope"></i> venkatesh.sb2026@vitstudent.ac.in
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Resume Preview Modal -->
+  <div class="modal-overlay" id="resumeModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeResume()">&times;</button>
+      
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+        <h3 style="color: #fff;"><i class="fa-regular fa-file-lines" style="color: var(--accent-violet);"></i> Resume Preview</h3>
+        <button class="btn-resume" onclick="window.print()">
+          <i class="fa-solid fa-print"></i> Print / Save PDF
+        </button>
+      </div>
+
+      <!-- Resume Paper Body -->
+      <div class="resume-paper" id="printableResume">
+        <div class="resume-header">
+          <h1>Venkatesh S B</h1>
+          <div class="resume-subtitle">B.Tech CSE (Data Science) • Undergraduate</div>
+          <p style="color: #475569; font-size: 0.9rem;">
+            Vellore Institute of Technology, Vellore | Email: venkatesh.sb2026@vitstudent.ac.in
+          </p>
+        </div>
+
+        <div class="resume-section">
+          <h3>Education</h3>
+          <div class="resume-item">
+            <div class="resume-item-header">
+              <span>Vellore Institute of Technology (VIT), Vellore</span>
+              <span>Undergraduate</span>
+            </div>
+            <div class="resume-item-sub">Bachelor of Technology - Computer Science and Engineering (Data Science)</div>
+            <ul class="resume-bullets">
+              <li>Core Focus: Machine Learning, Statistical Inference, Data Structures &amp; Algorithms, Database Management Systems, Linear Algebra.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="resume-section">
+          <h3>Certifications</h3>
+          <ul class="resume-bullets">
+            <li><strong>Machine Learning Specialization:</strong> DeepLearning.AI — covering neural networks, regularized learning, and predictive modeling.</li>
+            <li><strong>Data Science Professional Certificate:</strong> IBM — practical training in SQL querying, exploratory analysis, and data visualization.</li>
+          </ul>
+        </div>
+
+        <div class="resume-section">
+          <h3>Technical Skills</h3>
+          <ul class="resume-bullets">
+            <li><strong>Languages:</strong> Python, R, SQL, C/C++</li>
+            <li><strong>ML &amp; Data Tools:</strong> PyTorch, Scikit-Learn, Pandas, NumPy, Matplotlib, Seaborn</li>
+            <li><strong>Concepts &amp; Frameworks:</strong> Supervised Learning, Time-Series Forecasting, Natural Language Processing, EDA</li>
+          </ul>
+        </div>
+
+        <div class="resume-section">
+          <h3>Selected Projects</h3>
+          <ul class="resume-bullets">
+            <li><strong>Neural Time-Series Forecasting:</strong> Designed an LSTM pipeline to predict seasonal trends on complex numerical series.</li>
+            <li><strong>Semantic Document Search Engine:</strong> Built vector embedding search routines using cosine similarity for contextual document retrieval.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Venkatesh S B • VIT Vellore</p>
+  </footer>
+
+  <script>
+    function openResume() {
+      document.getElementById('resumeModal').classList.add('active');
+    }
+    function closeResume() {
+      document.getElementById('resumeModal').classList.remove('active');
+    }
+    document.getElementById('resumeModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeResume();
+      }
+    });
+  </script>
+
+</body>
+</html>
